@@ -4,7 +4,6 @@ return {
 	-- dependencies = { 'Kaiser-Yang/blink-cmp-avante', },
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"huijiro/blink-cmp-supermaven",
 	},
 	-- use a release tag to download pre-built binaries
 	version = "1.*",
@@ -16,7 +15,6 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
-		"default",
 		-- 'super-tab' for mappings similar to vscode (tab to accept)
 		-- 'enter' for enter to accept
 		-- 'none' for no mappings
@@ -38,22 +36,15 @@ return {
 
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = { documentation = { auto_show = true } },
-		signature = { enabled = true },
+		-- signature = { enabled = true },
 
 		-- snippets = { preset = "mini_snippets" },
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp","codecompanion", "supermaven", "path", "snippets", "buffer" },
+			default = { "lsp","codecompanion", "path", "snippets", "buffer" },
 			-- default = { "lsp", "path", "snippets", "buffer" },
-			providers = {
-				supermaven = {
-					name = "supermaven",
-					module = "blink-cmp-supermaven",
-					async = true,
-				},
-			},
 		},
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
 		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
