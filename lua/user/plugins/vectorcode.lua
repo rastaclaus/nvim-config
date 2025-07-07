@@ -6,7 +6,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("vectorcode").setup({
-			async_backend = "default",
+			async_backend = "lsp",
 			on_setup = {
 				update = false, -- set to true to enable update when `setup` is called.
 				lsp = false,
