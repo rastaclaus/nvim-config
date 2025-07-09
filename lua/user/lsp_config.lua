@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+
 vim.lsp.config("ruff", {
 	init_options = {
 		settings = {
@@ -31,15 +32,9 @@ vim.lsp.config("gopls", {
 vim.lsp.config("dmypy-ls", {
 	cmd = { "dmypy-ls" },
 	filetypes = { "python" },
-	init_settings = {
+	root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile" },
+	init_options = {
 		settings = {
-			root_dir = lspconfig.util.root_pattern(
-				"pyproject.toml",
-				"setup.py",
-				"setup.cfg",
-				"requirements.txt",
-				"Pipfile"
-			),
 			single_file_support = true,
 		},
 	},
