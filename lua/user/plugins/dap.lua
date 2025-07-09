@@ -10,7 +10,7 @@ return {
 	},
 	config = function()
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "python" },
+			ensure_installed = {},
 			automatic_setup = true,
 		})
 
@@ -33,11 +33,31 @@ return {
 		end
 
 		-- Конфигурация для Python
-		dap.adapters.python = {
-			type = "executable",
-			command = "python",
-			args = { "-m", "debugpy.adapter" },
-		}
+		dap.adapters.python = function(cb, config)
+			if config.request == "attach" then
+				---@diagnostic disable-next-line: undefined-field
+				local port = (config.connect or config).port
+				---@diagnostic disable-next-line: undefined-field
+				local host = (config.connect or config).host or "127.0.0.1"
+				cb({
+					type = "server",
+					port = assert(port, "`connect.port` is required for a python `attach` configuration"),
+					host = host,
+					options = {
+						source_filetype = "python",
+					},
+				})
+			else
+				cb({
+					type = "executable",
+					command = vim.fn.getcwd() .. "./venv/bin/python",
+					args = { "-m", "debugpy.adapter" },
+					options = {
+						source_filetype = "python",
+					},
+				})
+			end
+		end
 
 		dap.configurations.python = {
 			{
@@ -45,16 +65,23 @@ return {
 				request = "launch",
 				name = "Launch file",
 				program = "${file}", -- текущий открытый файл
-				pythonPath = function()
-					return "/usr/bin/python" -- или путь к нужному Python (можно удалить, если используешь venv)
-				end,
 			},
 			{
 				type = "python",
 				request = "attach",
-				name = "Attach to process",
-				host = "localhost",
-				port = 5678,
+				connect = {
+					host = "localhost",
+					port = 5678,
+				},
+				mode = "remote",
+				name = "Attach to process localhost:5678",
+				cwd = vim.fn.getcwd(),
+				pathMappings = {
+					{
+						localRoot = vim.fn.getcwd() .. "/src", -- Wherever your Python code lives locally.
+						remoteRoot = "/app/src", -- Wherever your Python code lives in the container.
+					},
+				},
 			},
 		}
 	end,
