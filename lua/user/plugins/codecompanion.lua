@@ -26,6 +26,17 @@ return {
 							model = {
 								default = "gemini-2.5-flash", -- define llm model to be used
 							},
+							temperature = {
+								order = 2,
+								mapping = "parameters",
+								type = "number",
+								optional = true,
+								default = 0.0,
+								desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
+								validate = function(n)
+									return n >= 0 and n <= 2, "Must be between 0 and 2"
+								end,
+							},
 						},
 					})
 				end,
@@ -63,7 +74,10 @@ return {
 					close_chat_at = 240, -- Close an open chat buffer if the total columns of your display are less than...
 					layout = "vertical", -- vertical|horizontal split for default provider
 					opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
-					provider = "mini_diff", -- default|mini_diff
+					provider = "default", -- default|mini_diff
+				},
+				chat = {
+					show_settings = true,
 				},
 			},
 			---@module "vectorcode"
