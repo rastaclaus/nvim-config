@@ -3,6 +3,10 @@ return {
 	build = "make",
 	dependencies = "nvim-lua/plenary.nvim",
 	config = function()
-		require("rsync").setup()
+		--- @type RsyncConfig
+		require("rsync").setup({
+			sync_on_save=false
+
+		})
 	end,
 }
