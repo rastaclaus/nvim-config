@@ -14,6 +14,11 @@ vim.lsp.config("pylsp", {
 			plugins = {
 				pycodestyle = {
 					maxLineLength = 120,
+					ignore = {"E701"}
+				},
+				pylsp_mypy = {
+					dmypy = true,
+					overrides = { "--python-executable", vim.fn.system("which python"):gsub("\n$", ""), true },
 				},
 			},
 		},
@@ -29,15 +34,3 @@ vim.lsp.config("ty", {
 vim.lsp.config("gopls", {
 	root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
 })
-vim.lsp.config("dmypy-ls", {
-	cmd = { "dmypy-ls" },
-	filetypes = { "python" },
-	root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile" },
-	init_options = {
-		settings = {
-			single_file_support = true,
-		},
-	},
-})
-
-vim.lsp.enable("dmypy-ls")
