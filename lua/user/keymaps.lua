@@ -5,5 +5,5 @@ vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>", { noremap = t
 vim.keymap.set("v", "<leader>cc", ":CodeCompanion <CR>", { noremap = true })
 
 --rsync up/down file
-vim.keymap.set("n", "<leader>ru", "RsyncUpFile <CR>", {noremap = true})
-vim.keymap.set("n", "<leader>rd", "RsyncDownlFile <CR>", {noremap = true})
+vim.keymap.set("n", "<leader>ru", ":RsyncUpFile <CR>", {noremap = true})
+vim.keymap.set("n", "<leader>rd", ":RsyncDownFile <CR>", {noremap = true})
