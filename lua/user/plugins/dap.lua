@@ -50,8 +50,7 @@ return {
 			else
 				cb({
 					type = "executable",
-					command = vim.fn.getcwd() .. "./venv/bin/python",
-					args = { "-m", "debugpy.adapter" },
+					command = ("debugpy-adapter"),
 					options = {
 						source_filetype = "python",
 					},
@@ -70,7 +69,6 @@ return {
 				type = "python",
 				request = "attach",
 				connect = {
-					host = "localhost",
 					port = 5678,
 				},
 				mode = "remote",
@@ -79,7 +77,7 @@ return {
 				pathMappings = {
 					{
 						localRoot = vim.fn.getcwd() .. "/src", -- Wherever your Python code lives locally.
-						remoteRoot = "/app/src", -- Wherever your Python code lives in the container.
+						remoteRoot = vim.fn.getcwd() .. "/src", -- Wherever your Python code lives in the container.
 					},
 				},
 			},
