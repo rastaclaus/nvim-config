@@ -3,9 +3,9 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"williamboman/mason.nvim",
-		"nvim-dap-ui",
-		"nvim-dap-virtual-text",
-		"nvim-nio",
+		"rcarriga/nvim-dap-ui",
+		"theHamsta/nvim-dap-virtual-text",
+		"nvim-neotest/nvim-nio",
 		"jay-babu/mason-nvim-dap.nvim",
 	},
 	config = function()
