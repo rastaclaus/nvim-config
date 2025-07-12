@@ -8,22 +8,22 @@ vim.lsp.config("ruff", {
 		},
 	},
 })
-vim.lsp.config("pylsp", {
-	init_options = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					maxLineLength = 120,
-					ignore = {"E701"}
-				},
-				pylsp_mypy = {
-					dmypy = true,
-					overrides = { "--python-executable", vim.fn.system("which python"):gsub("\n$", ""), true },
-				},
-			},
-		},
-	},
-})
+-- vim.lsp.config("pylsp", {
+-- 	init_options = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				pycodestyle = {
+-- 					maxLineLength = 120,
+-- 					ignore = {"E701"}
+-- 				},
+-- 				pylsp_mypy = {
+-- 					dmypy = true,
+-- 					overrides = { "--python-executable", vim.fn.system("which python"):gsub("\n$", ""), true },
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 vim.lsp.config("ty", {
 	init_options = {
 		settings = {
