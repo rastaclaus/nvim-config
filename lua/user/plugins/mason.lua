@@ -7,7 +7,12 @@ return {
 	},
 	config = function()
 		require("mason").setup()
-		require("mason-lspconfig").setup({})
+		require("mason-lspconfig").setup({
+			automatic_enable = {
+				exclude = {
+				},
+			},
+		})
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"lua-language-server",
