@@ -9,7 +9,7 @@ return {
 		require("mini.surround").setup()
 		require("mini.snippets").setup()
 		require("mini.comment").setup()
-		require("mini.diff").setup()
+		-- require("mini.diff").setup()
 	end,
 }
 

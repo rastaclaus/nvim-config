@@ -17,6 +17,7 @@ return {
 			ensure_installed = {
 				"lua-language-server",
 				"ruff",
+				"pylsp",
 				"stylua",
 				"json-lsp",
 				"jq",

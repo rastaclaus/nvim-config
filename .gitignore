@@ -40,4 +40,6 @@ luac.out
 *.hex
 
 lazy-lock.json
-
+.aider.chat.*
+.aider.input.history*
+.aider.tag*
