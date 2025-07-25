@@ -29,3 +29,5 @@ vim.wo.number = true
 vim.wo.wrap = false
 
 vim.opt.completeopt = "menu,menuone,noselect,fuzzy"
+
+vim.opt.autoread = true
