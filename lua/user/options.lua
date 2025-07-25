@@ -1,3 +1,7 @@
+-- Space as leader:
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0
 vim.opt.expandtab = false
@@ -7,14 +11,12 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "->", trail = "-" }
 
 -- disable startup message:
-vim.opt.shortmess:append {s = true, I = true}
-
--- Space as leader:
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
+vim.opt.shortmess:append({ s = true, I = true })
 
 -- Clipboard settings
-vim.g.clipboard = 'osc52'
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+
+vim.opt.termguicolors = true
 
 --настройки поиска
 vim.opt.ignorecase = true
@@ -26,3 +28,4 @@ vim.opt.incsearch = true
 vim.wo.number = true
 vim.wo.wrap = false
 
+vim.opt.completeopt = "menu,menuone,noselect,fuzzy"
